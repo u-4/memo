@@ -70,6 +70,29 @@ defaults write -app アプリケーション名 AppleLanguages "(en, ja)"
 defaults delete -app アプリケーション名 AppleLanguages
 ```
 
+## macOSメンテナンス
+
+### 標準のメンテナンススクリプト
+
+基本的には自動で毎日、毎週、毎月のものが実行される
+
+#### メンテナンススクリプトを実行
+
+```bash
+sudo periodic daily weekly monthly
+```
+
+#### メンテナンススクリプトの実行を確認
+
+```bash
+ls -l /var/log/*.out
+```
+
+### 既知の無線LANに再接続されない時の対応
+
+- 設定：ネットワークの詳細の接続済Wifi一覧から一度削除して再度接続トライ
+- キーチェーンアクセスでSSID名で検索して一度削除、再度接続・登録
+
 ## macOS mojaveアップデート
 
 macOSの2018年のメジャーアップデート。High Sierraから。2018/09/29時点の情報収拾。2018-10-03にMBP13をアップデートした。
