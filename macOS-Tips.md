@@ -70,6 +70,45 @@ defaults write -app アプリケーション名 AppleLanguages "(en, ja)"
 defaults delete -app アプリケーション名 AppleLanguages
 ```
 
+## macOSでYouTubeダウンロード
+
+`homebrew`で`youtube-dl`をインストールしてコマンドラインで。
+
+[rg3/youtube-dl: Command-line program to download videos from YouTube.com and other video sites](https://github.com/rg3/youtube-dl)
+
+```bash
+brew install youtube-dl
+```
+
+#### YouTubeダウンロード
+
+```bash
+youtube-dl URL
+```
+
+#### mp4フォーマット指定
+
+```bash
+youtube-dl -f mp4 URL
+```
+
+#### 音声取り出し（ffmpeg連携）
+
+```bash
+youtube-dl -x --audio-format m4a URL
+```
+
+#### youtube-dl関連alias
+
+[dotfiles/.bashrc](https://github.com/u-4/dotfiles/blob/master/.bashrc)
+
+```bash
+# alias for youtube-dl
+alias youtubemp4="youtube-dl -f mp4"
+alias youtubem4a="youtube-dl -x --audio-format m4a"
+alias youtubemp3="youtube-dl -x --audio-format mp3"
+```
+
 ## macOSメンテナンス
 
 ### 標準のメンテナンススクリプト
@@ -96,7 +135,6 @@ ls -l /var/log/*.out
 ## macOS mojaveアップデート
 
 macOSの2018年のメジャーアップデート。High Sierraから。2018/09/29時点の情報収拾。2018-10-03にMBP13をアップデートした。
-
 
 ### アップデート後に必要なこと
 
@@ -159,10 +197,9 @@ You should create these directories and change their ownership to your account.
 
 →特に問題なく動作している模様。
 
-
 #### 非レティナディスプレイでのターミナルのフォント
 
-https://rcmdnk.com/blog/2018/09/25/computer-mac/
+[macOS Mojave (10.14)へのアップグレード](https://rcmdnk.com/blog/2018/09/25/computer-mac/)
 
 あたりを参考に設定を変更すれば良さそう。
 
@@ -176,6 +213,7 @@ LINEがかなりひどいことになっていたがこちらの設定ではま�
 ```bash
 defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
 ```
+
 ##### mojaveのデフォルトに戻すコマンド
 
 ```bash
