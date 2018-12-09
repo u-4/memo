@@ -69,3 +69,116 @@ defaults write -app アプリケーション名 AppleLanguages "(en, ja)"
 ```bash
 defaults delete -app アプリケーション名 AppleLanguages
 ```
+
+## macOS mojaveアップデート
+
+macOSの2018年のメジャーアップデート。High Sierraから。2018/09/29時点の情報収拾。2018-10-03にMBP13をアップデートした。
+
+
+### アップデート後に必要なこと
+
+#### Bitdefenderのアクセス許可
+
+指示通りにスキャン用のプログラムにフルアクセスを許可する
+
+#### Homebrewの設定
+
+そのまま`brew update`しようとするとエラーが出る。Homebrewでxcrun: errorを参考に修正。
+
+```bash
+$ xcode-select --print-path
+/Library/Developer/CommandLineTools
+```
+
+となっているのが問題のようで、
+
+```bash
+sudo xcode-select -switch /Applications/Xcode.app
+```
+
+で正しくなる。
+
+```bash
+xcode-select --install
+```
+
+でApp StoreからXcodeのインストール、立ち上げてコンポーネントのインストール。コマンドラインツールも再インストール（アップデート？）。
+
+```bash
+sudo xcodebuild -license accept
+```
+
+ここまで通れば下準備完了。
+
+`/usr/local/sbin`がないと怒られるので指示通りに作成する。
+
+```bash
+$ brew doctor
+Please note that these warnings are just used to help the Homebrew maintainers
+with debugging if you file an issue. If everything you use Homebrew for is
+working fine: please don't worry or file an issue; just ignore this. Thanks!
+
+Warning: The following directories do not exist:
+/usr/local/sbin
+
+You should create these directories and change their ownership to your account.
+  sudo mkdir -p /usr/local/sbin
+  sudo chown -R $(whoami) /usr/local/sbin
+```
+
+ここまで通れば`brew doctor`で出るのはいつものR.app関連のライブラリエラーのみになる。
+
+### 各種ソフト対応情報（と結果）
+
+#### Bitdefender Antivirus
+
+公式ページを見る限りはmojaveも対象に（いつの間にか）加わっているので問題なさそう。
+
+→特に問題なく動作している模様。
+
+
+#### 非レティナディスプレイでのターミナルのフォント
+
+https://rcmdnk.com/blog/2018/09/25/computer-mac/
+
+あたりを参考に設定を変更すれば良さそう。
+
+→とりあえず困らない感じなのでmojaveのデフォルトのままにしておくことに。
+
+→やっぱり色々なアプリで汚い気がするので変更してみる方針に。＠2018/10/25
+LINEがかなりひどいことになっていたがこちらの設定ではまあ普通の感じになった。非レティナの外部ディスプレイ使っている間はこの状態の方が良さそう。
+
+##### 変更するコマンド
+
+```bash
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+```
+##### mojaveのデフォルトに戻すコマンド
+
+```bash
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool YES
+```
+
+#### Homebrew
+
+[Homebrewでxcrun: error](https://rcmdnk.com/blog/2018/09/27/computer-mac-homebrew/)
+
+エラーが出たらこの辺りを参照する感じになるか。
+
+→エラーが出たのでこの通りに対応
+
+#### R・RStudio
+
+言語ロケールに関するエラーや設定の不備が生じる
+
+[Tokyo.Rより](https://r-wakalang.slack.com/archives/C06QP6NJ0/p1538054121000100)
+
+解決方法はある模様で、今後アップデートでも解消できそうな内容。
+
+→今のところ出ていない。ロケール設定してあるからか？
+
+#### Scansnap
+
+[macOS Mojave v10.14 への対応予定を教えてください。 | ScanSnap よくあるご質問 (PFU)](http://faq.pfu.jp/faq/show/2193?site_domain=scansnap)
+
+新し目のものは対応予定。古いやつは新しいソフト使って接続する分には行けそうだが……
