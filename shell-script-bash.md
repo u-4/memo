@@ -186,9 +186,15 @@ export PATH="$(command -p getconf PATH):$PATH"
 
 [変数を使用する | UNIX & Linux コマンド・シェルスクリプト リファレンス](https://shellscript.sunone.me/variable.html)
 
+[bash - シェルスクリプトのfor文で配列変数を使いたい。 - スタック・オーバーフロー](https://ja.stackoverflow.com/questions/24130/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AEfor%E6%96%87%E3%81%A7%E9%85%8D%E5%88%97%E5%A4%89%E6%95%B0%E3%82%92%E4%BD%BF%E3%81%84%E3%81%9F%E3%81%84/24138)
+
 ## 配列
 
-https://shellscript.sunone.me/array.html
+[配列を使用する | UNIX & Linux コマンド・シェルスクリプト リファレンス](https://shellscript.sunone.me/array.html)
+
+## 位置パラメータ
+
+[位置パラメーターの一括展開 $* $@ "$*" "$@" の違いを知れ!! - Shell Script Advent Calendar 2016 - ダメ出し Blog](https://fumiyas.github.io/2016/12/15/positional-parameters.sh-advent-calendar.html)
 
 ## ワイルドカード
 
@@ -293,8 +299,6 @@ trap `終了時処理` EXIT
 ### 変数が定義されているかのチェック
 
 [POSIXシェルで変数がセットされているか検査するイディオム - Qiita](https://qiita.com/blackenedgold/items/4f91a174e0f63ee42699)
-
-
 
 ### `[]`と`[[]]`の違い
 
