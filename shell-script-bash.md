@@ -334,3 +334,16 @@ trap `終了時処理` EXIT
 ### 標準入力の`IFS= read -r VAR`での読み込み
 
 `$IFS`は単語の区切りとして認識する文字列（デリミタ）が入っていて、デフォルトでは``$' ¥t¥n'``（スペース、タブ、改行）が設定されている。このため`read`で受ける標準入力に空白文字などが含まれていると処理が意図せぬ形になる可能性がある。`IFS= read -r VAR`のように`IFS`に（この`read`コマンドの間だけ）空白文字を設定した上で実行することで、自動文字区切りを一時的に無効にすることができる。なおIFSは「Internal Field Separator」の略らしい。
+
+### macOS (OSX) 専用です！
+
+```bash
+case ${OSTYPE} in
+  darwin*)
+    ;;
+  *)
+    echo $(tput setaf 1)This script works only on macOS!!$(tput sgr0)
+    exit 1
+    ;;
+esac
+```
