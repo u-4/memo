@@ -55,4 +55,11 @@ $ python3 --version
 Python 3.7.1
 ```
 
-となり、`python3`と明示する必要がある。`python@2`は`fontforge`パッケージなどで依存関係があるためアンインストールするわけにもいかない。`pip`も同様に`pip3`と`pip`で使い分ける必要がある模様。
+となり、`python3`と明示する必要がある。`python@2`は`fontforge`パッケージなどで依存関係があるためアンインストールするわけにもいかない。`pip`も同様に`pip3`と`pip`で使い分ける必要がある模様。参考までにmacOS mojaveのプリインストール版は
+
+```bash
+$ /usr/bin/python --version
+Python 2.7.10
+```
+
+となっている。
