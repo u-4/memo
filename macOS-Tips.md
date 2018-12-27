@@ -80,25 +80,25 @@ defaults delete -app アプリケーション名 AppleLanguages
 brew install youtube-dl
 ```
 
-#### YouTubeダウンロード
+### YouTubeダウンロード
 
 ```bash
 youtube-dl URL
 ```
 
-#### mp4フォーマット指定
+### mp4フォーマット指定
 
 ```bash
 youtube-dl -f mp4 URL
 ```
 
-#### 音声取り出し（ffmpeg連携）
+### 音声取り出し（ffmpeg連携）
 
 ```bash
 youtube-dl -x --audio-format m4a URL
 ```
 
-#### youtube-dl関連alias
+### youtube-dl関連alias
 
 [dotfiles/.bashrc](https://github.com/u-4/dotfiles/blob/master/.bashrc)
 
@@ -126,6 +126,16 @@ sudo periodic daily weekly monthly
 ```bash
 ls -l /var/log/*.out
 ```
+
+### アイコンキャッシュのクリア
+
+[Clear Mac OS X's icon cache.](https://gist.github.com/fabiofl/5873100)
+
+```bash
+sudo rm -rfv /Library/Caches/com.apple.iconservices.store; sudo find /private/var/folders/ \( -name com.apple.dock.iconcache -or -name com.apple.iconservices \) -exec rm -rfv {} \; ; sleep 3;sudo touch /Applications/* ; killall Dock; killall Finder
+```
+
+古い情報のはSIPがらみでうまくいかないことも多いが、これはうまく働いてくれた。
 
 ### 既知の無線LANに再接続されない時の対応
 
