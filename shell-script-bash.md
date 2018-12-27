@@ -347,3 +347,25 @@ case ${OSTYPE} in
     ;;
 esac
 ```
+
+### git cloneで取得したファイルのタイムスタンプをcommit時点に変更
+
+[コミット日付をタイムスタンプに復元したい - by shigemk2](https://www.shigemk2.com/entry/git.timestamp)
+
+```bash
+for FILE in `git ls-files`; do
+  TIME=`git log --pretty=format:%ci -n1 $FILE`
+  echo $TIME' '$FILE
+  STAMP=`date -d "$TIME" +"%y%m%d%H%M.%S"`
+  touch -t $STAMP $FILE
+done
+```
+
+`echo`の行は不要ならコメントアウトする。
+
+### ファイルの更新時刻の比較
+
+mtimeを比較したいのだが、`[[ fileA -gt fileB ]]`でなんかうまくいかない場合。
+
+[timestamps - Compare two file modification dates - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/372857/compare-two-file-modification-dates)
+
